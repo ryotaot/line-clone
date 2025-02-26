@@ -34,7 +34,7 @@ const SendMessage = () => {
               marginLeft: "5px",
               marginBottom: "-3px",
             }}
-            placeholder="メッセージを入力"
+            placeholder="メッセージを入力してください"
             type="text"
             onChange={(e) => setMessage(e.target.value)}
             value={message}
