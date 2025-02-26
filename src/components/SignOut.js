@@ -1,11 +1,14 @@
 import { Button } from "@mui/material";
 import React from "react";
 import { auth } from "../firebase";
+import CallIcon from "@mui/icons-material/Call";
 
 const SignOut = () => {
   return (
-    <div>
+    <div className="header">
       <Button onClick={() => auth.signOut()}>サインアウト</Button>
+      <h3>{auth.currentUser.displayName}</h3>
+      <CallIcon />
     </div>
   );
 };

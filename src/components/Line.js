@@ -1,6 +1,6 @@
 import React, { use, useEffect, useState } from "react";
 import SignOut from "./SignOut";
-import { db } from "../firebase.js";
+import { db, auth } from "../firebase.js";
 import SendMessage from "./SendMessage";
 
 const Line = () => {
@@ -19,16 +19,21 @@ const Line = () => {
       {console.log(messages)}
       <SignOut />
       <div className="msgs">
-        {messages.map(({ id, text, photoULR, uid }) => (
+        {messages.map(({ id, text, uid }) => (
           <div>
-            <div key={id}>
-              <img src={photoULR} alt="" />
+            <div
+              key={id}
+              className={`msg ${
+                uid === auth.currentUser.uid ? "sent" : "received"
+              }`}
+            >
+              {" "}
               <p>{text}</p>
             </div>
           </div>
         ))}
       </div>
-      <SendMessage />
+      <SendMessage style={{ color: "#7AC2FF", marginLeft: "20px" }} />
     </div>
   );
 };
